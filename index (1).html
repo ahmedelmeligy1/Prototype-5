@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abdullah — Digital Marketing Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f5f0e8;
+  --cream2: #ede7d9;
+  --ink: #1a1a2e;
+  --ink2: #252540;
+  --teal: #0d7377;
+  --teal-light: #14a5aa;
+  --teal-dim: rgba(13,115,119,0.1);
+  --rust: #c94f2c;
+  --text-dark: #1a1a2e;
+  --text-mid: #4a4a6a;
+  --text-light: #8a8aaa;
+  --white: #ffffff;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 5%;
+  background: rgba(245,240,232,0.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(13,115,119,0.12);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 4px 30px rgba(26,26,46,0.08); }
+.nav-logo { font-family: 'Syne', sans-serif; font-weight: 900; font-size: 1.25rem; color: var(--teal); letter-spacing: -0.02em; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 500; color: var(--text-mid); transition: color 0.25s; }
+.nav-links a:hover { color: var(--teal); }
+.nav-cta {
+  background: var(--ink); color: var(--cream);
+  font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600;
+  padding: 0.55rem 1.4rem; border-radius: 100px; border: none;
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.25s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--teal); transform: translateY(-1px); }
+
+/* HERO */
+#hero {
+  min-height: 100vh; background: var(--ink);
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; position: relative; overflow: hidden;
+  padding: 0 5%; gap: 4rem;
+}
+.hero-bg-shape1 { position: absolute; top: -100px; left: -100px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(13,115,119,0.18) 0%, transparent 70%); pointer-events: none; }
+.hero-bg-shape2 { position: absolute; bottom: -80px; right: -80px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(201,79,44,0.12) 0%, transparent 70%); pointer-events: none; }
+.hero-bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+
+.hero-left { position: relative; z-index: 2; padding: 8rem 0 6rem; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(13,115,119,0.2); border: 1px solid rgba(13,115,119,0.4);
+  color: var(--teal-light); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.8rem;
+  animation: riseIn 0.7s ease both;
+}
+.eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-light); animation: pulse 2s infinite; flex-shrink: 0; }
+.hero-heading {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900; line-height: 1.0; letter-spacing: -0.03em;
+  color: var(--white); animation: riseIn 0.7s 0.15s ease both;
+}
+.hero-heading .hl { color: var(--teal-light); }
+.hero-heading .sub { display: block; font-weight: 700; font-size: 0.42em; color: rgba(245,240,232,0.45); letter-spacing: 0.02em; margin-top: 0.5em; font-family: 'Inter', sans-serif; }
+.hero-desc { margin-top: 1.5rem; font-size: 1rem; line-height: 1.85; color: rgba(245,240,232,0.6); max-width: 460px; animation: riseIn 0.7s 0.3s ease both; }
+.hero-actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; animation: riseIn 0.7s 0.45s ease both; }
+.btn-teal {
+  background: var(--teal); color: var(--white);
+  font-size: 0.92rem; font-weight: 600; padding: 0.8rem 2rem;
+  border-radius: 100px; border: none; cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(13,115,119,0.4);
+}
+.btn-teal:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(13,115,119,0.5); }
+.btn-outline-light {
+  background: transparent; color: rgba(245,240,232,0.85);
+  font-size: 0.92rem; font-weight: 500; padding: 0.8rem 2rem;
+  border-radius: 100px; border: 1px solid rgba(245,240,232,0.2);
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: border-color 0.25s, background 0.25s;
+}
+.btn-outline-light:hover { border-color: rgba(245,240,232,0.5); background: rgba(245,240,232,0.07); }
+
+.hero-right { position: relative; z-index: 2; padding: 8rem 0 6rem; }
+.hcard-main { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px); animation: riseIn 0.7s 0.5s ease both; }
+.hcard-avatar { width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--teal-light)); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 900; color: white; margin-bottom: 1rem; }
+.hcard-name { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); letter-spacing: -0.02em; }
+.hcard-role { font-size: 0.8rem; color: var(--teal-light); margin-top: 0.25rem; letter-spacing: 0.04em; }
+.hcard-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 1.2rem 0; }
+.hcard-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.hstat-val { font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 900; color: var(--white); line-height: 1; }
+.hstat-lbl { font-size: 0.72rem; color: rgba(245,240,232,0.45); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.hcard-floating { position: absolute; left: -1.5rem; bottom: 3rem; background: var(--teal); border-radius: 14px; padding: 0.9rem 1.2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.3); animation: floatAnim 4s ease-in-out infinite, riseIn 0.7s 0.7s ease both; }
+.hcard-floating-label { font-size: 0.68rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
+.hcard-floating-val { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: white; }
+.hcard-floating2 { position: absolute; right: -1rem; top: 2rem; background: var(--cream); border-radius: 14px; padding: 0.8rem 1.1rem; box-shadow: 0 10px 40px rgba(0,0,0,0.25); animation: floatAnim 4s 1s ease-in-out infinite, riseIn 0.7s 0.9s ease both; display: flex; align-items: center; gap: 0.7rem; }
+.hcard-floating2-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--rust); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.f2-title { font-size: 0.68rem; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.06em; }
+.f2-val { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 800; color: var(--text-dark); }
+
+/* WAVE */
+.wave-div { display: block; width: 100%; line-height: 0; }
+
+/* SECTION COMMONS */
+.sec-eyebrow { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; }
+.sec-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--teal); flex-shrink: 0; }
+.sec-eyebrow span { font-size: 0.72rem; letter-spacing: 0.2em; color: var(--teal); font-weight: 600; text-transform: uppercase; }
+.sec-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; color: var(--ink); margin-bottom: 3rem; letter-spacing: -0.02em; }
+
+/* ABOUT */
+#about { background: var(--cream); padding: 6rem 5%; }
+.about-inner { max-width: 1080px; margin: 0 auto; }
+.about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 5rem; align-items: center; }
+.photo-frame { background: linear-gradient(135deg, var(--ink2), #30306a); border-radius: 20px; aspect-ratio: 3/4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; color: rgba(245,240,232,0.3); font-size: 0.82rem; position: relative; overflow: hidden; }
+.photo-frame::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, rgba(13,115,119,0.25), transparent); }
+.photo-frame svg { width: 56px; opacity: 0.3; }
+.photo-avail-badge { margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--teal); color: white; font-size: 0.72rem; font-weight: 600; padding: 0.5rem 1rem; border-radius: 100px; letter-spacing: 0.04em; }
+.avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #4eff9a; animation: pulse 2s infinite; flex-shrink: 0; }
+.about-text p { line-height: 1.9; color: var(--text-mid); font-size: 0.95rem; margin-bottom: 1.1rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+.stag { background: var(--white); border: 1px solid rgba(13,115,119,0.18); color: var(--teal); font-size: 0.78rem; font-weight: 500; padding: 0.35rem 1rem; border-radius: 100px; transition: all 0.2s; cursor: default; letter-spacing: 0.02em; }
+.stag:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
+/* SERVICES */
+#services { background: var(--ink); padding: 6rem 5%; }
+#services .sec-eyebrow::before { background: var(--teal-light); }
+#services .sec-eyebrow span { color: var(--teal-light); }
+#services .sec-title { color: var(--white); }
+.srv-inner { max-width: 1080px; margin: 0 auto; }
+.srv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.srv-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 1.8rem; position: relative; overflow: hidden; transition: border-color 0.3s, background 0.3s, transform 0.3s; }
+.srv-card:hover { border-color: rgba(13,115,119,0.4); background: rgba(13,115,119,0.07); transform: translateY(-4px); }
+.srv-card::after { content: attr(data-num); position: absolute; bottom: 1rem; left: 1.5rem; font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 1; }
+.srv-icon { width: 46px; height: 46px; border-radius: 12px; background: var(--teal-dim); border: 1px solid rgba(13,115,119,0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-size: 1.25rem; }
+.srv-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 0.7rem; letter-spacing: -0.01em; }
+.srv-desc { font-size: 0.84rem; color: rgba(245,240,232,0.5); line-height: 1.85; }
+
+/* NUMBERS */
+.numbers-strip { background: var(--teal); padding: 3.5rem 5%; }
+.numbers-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; text-align: center; }
+.num-val { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 900; color: var(--white); line-height: 1; }
+.num-lbl { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* EXPERIENCE */
+#experience { background: var(--cream); padding: 6rem 5%; }
+.exp-inner { max-width: 1080px; margin: 0 auto; }
+.exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.exp-card { background: var(--white); border: 1px solid rgba(26,26,46,0.08); border-radius: 16px; padding: 1.8rem; position: relative; transition: box-shadow 0.3s, transform 0.3s; }
+.exp-card:hover { box-shadow: 0 12px 40px rgba(26,26,46,0.1); transform: translateY(-3px); }
+.exp-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 50px; background: var(--teal); border-radius: 16px 0 0 0; }
+.exp-period { display: inline-block; background: var(--teal-dim); color: var(--teal); font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 100px; margin-bottom: 1rem; letter-spacing: 0.04em; }
+.exp-role { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 0.3rem; letter-spacing: -0.01em; }
+.exp-company { font-size: 0.8rem; color: var(--teal); font-weight: 600; margin-bottom: 0.9rem; }
+.exp-desc { font-size: 0.83rem; color: var(--text-mid); line-height: 1.85; }
+
+/* CONTACT */
+#contact { background: var(--cream2); padding: 6rem 5%; }
+.contact-inner { max-width: 1080px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; }
+.contact-left h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--ink); margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+.contact-left p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 2rem; }
+.c-methods { display: flex; flex-direction: column; gap: 0.9rem; }
+.c-method { display: flex; align-items: center; gap: 1rem; background: var(--white); border: 1px solid rgba(26,26,46,0.08); border-radius: 12px; padding: 1rem 1.2rem; text-decoration: none; color: var(--text-dark); transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s; }
+.c-method:hover { border-color: var(--teal); box-shadow: 0 4px 20px rgba(13,115,119,0.12); transform: translateX(4px); }
+.c-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+.c-icon.wa { background: rgba(37,211,102,0.12); }
+.c-icon.em { background: rgba(13,115,119,0.1); }
+.c-icon.li { background: rgba(10,102,194,0.1); }
+.c-meta-label { font-size: 0.68rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; }
+.c-meta-val { font-size: 0.88rem; font-weight: 600; color: var(--ink); }
+
+/* FORM */
+.c-form { background: var(--white); border: 1px solid rgba(26,26,46,0.08); border-radius: 20px; padding: 2.2rem; box-shadow: 0 8px 40px rgba(26,26,46,0.06); }
+.fgroup { margin-bottom: 1.1rem; }
+.fgroup label { display: block; font-size: 0.72rem; font-weight: 600; color: var(--text-mid); margin-bottom: 0.4rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.fgroup input, .fgroup textarea, .fgroup select { width: 100%; background: var(--cream); border: 1px solid rgba(26,26,46,0.1); border-radius: 10px; color: var(--ink); font-family: 'Inter', sans-serif; font-size: 0.9rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.25s, box-shadow 0.25s; }
+.fgroup input:focus, .fgroup textarea:focus, .fgroup select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,115,119,0.1); }
+.fgroup textarea { height: 110px; resize: vertical; }
+.fgroup select option { background: white; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.fsub { width: 100%; background: var(--ink); color: var(--cream); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.9rem; border-radius: 100px; border: none; cursor: pointer; transition: background 0.25s, transform 0.2s; margin-top: 0.4rem; letter-spacing: 0.02em; }
+.fsub:hover { background: var(--teal); transform: translateY(-2px); }
+
+/* FOOTER */
+footer { background: var(--ink); color: rgba(245,240,232,0.4); text-align: center; padding: 2rem; font-size: 0.82rem; }
+footer span { color: var(--teal-light); }
+
+/* SCROLL ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-l { opacity: 0; transform: translateX(-30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal-l.visible { opacity: 1; transform: translateX(0); }
+.reveal-r { opacity: 0; transform: translateX(30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal-r.visible { opacity: 1; transform: translateX(0); }
+
+@keyframes riseIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes floatAnim { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  #hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 7rem 0 3rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .srv-grid { grid-template-columns: 1fr 1fr; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .numbers-inner { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .nav-links { display: none; }
+}
+@media (max-width: 600px) {
+  .srv-grid { grid-template-columns: 1fr; }
+  .f-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">A. Abdullah</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-shape1"></div>
+  <div class="hero-bg-shape2"></div>
+  <div class="hero-bg-grid"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-dot"></div>
+      Digital Marketing Consultant · Available for Work
+    </div>
+    <h1 class="hero-heading">
+      <span class="hl">Abdullah</span><br>Al-Shareef
+      <span class="sub">Helping brands grow smarter, not just louder.</span>
+    </h1>
+    <p class="hero-desc">Data-driven marketing strategies that turn your ad budget into measurable results, loyal customers, and sustainable growth.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-teal">Explore Services</a>
+      <a href="#contact" class="btn-outline-light">Start a Project</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div style="position:relative;">
+      <div class="hcard-main">
+        <div class="hcard-avatar">A</div>
+        <div class="hcard-name">Abdullah Al-Shareef</div>
+        <div class="hcard-role">Digital Marketing Consultant</div>
+        <div class="hcard-divider"></div>
+        <div class="hcard-stats">
+          <div><div class="hstat-val">50+</div><div class="hstat-lbl">Happy Clients</div></div>
+          <div><div class="hstat-val">7 yrs</div><div class="hstat-lbl">Experience</div></div>
+          <div><div class="hstat-val">120+</div><div class="hstat-lbl">Projects Done</div></div>
+          <div><div class="hstat-val">3×</div><div class="hstat-lbl">Avg. Growth</div></div>
+        </div>
+      </div>
+      <div class="hcard-floating">
+        <div class="hcard-floating-label">Avg. ROAS</div>
+        <div class="hcard-floating-val">4.8×</div>
+      </div>
+      <div class="hcard-floating2">
+        <div class="hcard-floating2-icon">📈</div>
+        <div>
+          <div class="f2-title">Sales Growth</div>
+          <div class="f2-val">+200%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<svg class="wave-div" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--ink)">
+  <path d="M0 0 Q360 60 720 30 Q1080 0 1440 40 L1440 60 L0 60 Z" fill="var(--cream)"/>
+</svg>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="sec-eyebrow reveal"><span>Who I Am</span></div>
+    <h2 class="sec-title reveal">Where Creativity Meets Data</h2>
+    <div class="about-grid">
+      <div class="reveal-l">
+        <div class="photo-frame">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Add your photo here</span>
+        </div>
+        <div class="photo-avail-badge"><span class="avail-dot"></span>Open to New Projects</div>
+      </div>
+      <div class="about-text reveal-r">
+        <p>I'm Abdullah Al-Shareef, a digital marketing consultant specializing in building end-to-end marketing strategies that deliver measurable results. I help businesses and individuals transform their online presence from just "existing" to actually generating revenue.</p>
+        <p>Over 7 years in the field, I've developed a method that blends strategic thinking, data analysis, and creative communication. I believe great marketing starts with a deep understanding of your audience — and it doesn't end until you see real, trackable results.</p>
+        <div class="skill-tags">
+          <span class="stag">SEO / SEM</span>
+          <span class="stag">Meta Ads</span>
+          <span class="stag">Google Ads</span>
+          <span class="stag">Email Marketing</span>
+          <span class="stag">Content Strategy</span>
+          <span class="stag">Analytics</span>
+          <span class="stag">Brand Identity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="srv-inner">
+    <div class="sec-eyebrow reveal"><span>What I Offer</span></div>
+    <h2 class="sec-title reveal">Services</h2>
+    <div class="srv-grid">
+      <div class="srv-card reveal" data-num="01" style="transition-delay:0s"><div class="srv-icon">🎯</div><div class="srv-title">Digital Marketing Strategy</div><div class="srv-desc">A comprehensive marketing plan built on market data and audience behavior to maximize your return on every dollar spent.</div></div>
+      <div class="srv-card reveal" data-num="02" style="transition-delay:0.08s"><div class="srv-icon">📱</div><div class="srv-title">Social Media Management</div><div class="srv-desc">Professional daily content and active community management across all platforms, building a loyal and engaged audience.</div></div>
+      <div class="srv-card reveal" data-num="03" style="transition-delay:0.16s"><div class="srv-icon">📊</div><div class="srv-title">Paid Advertising</div><div class="srv-desc">High-efficiency Meta & Google Ads campaigns with the lowest cost-per-conversion, backed by transparent periodic reports.</div></div>
+      <div class="srv-card reveal" data-num="04" style="transition-delay:0.24s"><div class="srv-icon">🔍</div><div class="srv-title">Search Engine Optimization</div><div class="srv-desc">Sustainable organic rankings through technical improvements, strategic content creation, and authority link building.</div></div>
+      <div class="srv-card reveal" data-num="05" style="transition-delay:0.32s"><div class="srv-icon">✍️</div><div class="srv-title">Marketing Copywriting</div><div class="srv-desc">Persuasive copy for landing pages, ads, and email campaigns that converts visitors into paying customers.</div></div>
+      <div class="srv-card reveal" data-num="06" style="transition-delay:0.4s"><div class="srv-icon">🏷️</div><div class="srv-title">Branding & Identity</div><div class="srv-desc">A clear visual identity and brand message that sets you apart from competitors and builds genuine trust with your audience.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers-strip">
+  <div class="numbers-inner">
+    <div><div class="num-val">50+</div><div class="num-lbl">Happy Clients</div></div>
+    <div><div class="num-val">7</div><div class="num-lbl">Years of Experience</div></div>
+    <div><div class="num-val">120+</div><div class="num-lbl">Projects Completed</div></div>
+    <div><div class="num-val">3×</div><div class="num-lbl">Avg. Sales Growth</div></div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-inner">
+    <div class="sec-eyebrow reveal"><span>My Journey</span></div>
+    <h2 class="sec-title reveal">Work Experience</h2>
+    <div class="exp-grid">
+      <div class="exp-card reveal" style="transition-delay:0s">
+        <span class="exp-period">2021 — Present</span>
+        <div class="exp-role">Freelance Digital Marketing Consultant</div>
+        <div class="exp-company">Independent · Remote</div>
+        <div class="exp-desc">Delivered consulting for 30+ clients across retail, real estate, and tech sectors. Campaigns resulted in sales growth of up to 200%.</div>
+      </div>
+      <div class="exp-card reveal" style="transition-delay:0.1s">
+        <span class="exp-period">2019 — 2021</span>
+        <div class="exp-role">Head of Digital Marketing</div>
+        <div class="exp-company">Al-Nukhba E-Commerce Co.</div>
+        <div class="exp-desc">Managed an annual marketing budget exceeding $500K and led a team of 5 specialists. Achieved 150% revenue growth over two years.</div>
+      </div>
+      <div class="exp-card reveal" style="transition-delay:0.2s">
+        <span class="exp-period">2017 — 2019</span>
+        <div class="exp-role">Digital Marketing Specialist</div>
+        <div class="exp-company">Digital Pro Agency</div>
+        <div class="exp-desc">Managed multiple client accounts across diverse industries, specializing in Google and Meta Ads with in-depth Google Analytics reporting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="sec-eyebrow reveal"><span>Let's Talk</span></div>
+    <h2 class="sec-title reveal">Get in Touch</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-left reveal">
+          <h3>Have a project in mind?</h3>
+          <p>Whether you're looking for a quick consultation or a full-service engagement, I'm here to help. Reach out and let's build a strategy that fits your goals and budget.</p>
+        </div>
+        <div class="c-methods reveal">
+          <a href="https://wa.me/966500000000" class="c-method" target="_blank">
+            <div class="c-icon wa">💬</div>
+            <div><div class="c-meta-label">WhatsApp</div><div class="c-meta-val">+966 50 000 0000</div></div>
+          </a>
+          <a href="mailto:abdullah@example.com" class="c-method">
+            <div class="c-icon em">✉️</div>
+            <div><div class="c-meta-label">Email</div><div class="c-meta-val">abdullah@example.com</div></div>
+          </a>
+          <a href="https://linkedin.com/in/abdullah" class="c-method" target="_blank">
+            <div class="c-icon li">💼</div>
+            <div><div class="c-meta-label">LinkedIn</div><div class="c-meta-val">linkedin.com/in/abdullah</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="c-form reveal">
+        <div class="f-row">
+          <div class="fgroup"><label>Full Name</label><input type="text" placeholder="Your name..."/></div>
+          <div class="fgroup"><label>Phone Number</label><input type="text" placeholder="+1 (000) 000-0000"/></div>
+        </div>
+        <div class="fgroup"><label>Email Address</label><input type="email" placeholder="you@example.com"/></div>
+        <div class="fgroup">
+          <label>Service Needed</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Digital Marketing Strategy</option>
+            <option>Social Media Management</option>
+            <option>Paid Advertising (Meta / Google)</option>
+            <option>Search Engine Optimization</option>
+            <option>Marketing Copywriting</option>
+            <option>Branding & Identity</option>
+            <option>General Consultation</option>
+          </select>
+        </div>
+        <div class="fgroup"><label>Project Details</label><textarea placeholder="Tell me about your project and goals..."></textarea></div>
+        <button class="fsub" onclick="submitForm(this)">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Crafted with care by <span>Abdullah Al-Shareef</span> · All Rights Reserved © 2025</p>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => obs.observe(el));
+
+// Nav scroll shadow
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Form submit
+function submitForm(btn) {
+  btn.textContent = '✓ Message Sent Successfully!';
+  btn.style.background = 'var(--teal)';
+  setTimeout(() => {
+    btn.textContent = 'Send Message →';
+    btn.style.background = '';
+    document.querySelectorAll('.c-form input, .c-form textarea').forEach(el => el.value = '');
+    document.querySelector('.c-form select').selectedIndex = 0;
+  }, 3000);
+}
+</script>
+</body>
+</html>
